@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>standard template</title>
+    <link rel='stylesheet' href='styles/reset.css'>
+    <link rel='stylesheet' href='styles/main.css'>
+</head>
+	<body>
+		<section class="full-sheet">
+		
+			<!-- Below row includes character name and global information incl. class/level/experience points. -->
+			<div class="char-bar clearfix">
+				<div class="third-col float-left"> 
+				<h1>DnD Sheets</h1>
+				<input type="text" name="char-name" class="char-name js-char-name">
+				<span class="char-name">CHARACTER NAME</span>
+				</div> <!-- Character name end -->
+				<div class="summ-bar clearfix"> <!-- Top level character summary -->
+					<div class="summ-sect clearfix"> <!-- Class/Level container-->
+						<div class="float-left class-field">
+							<input type="text" name="char-class">
+							<div>CLASS</div>
+						</div>
+						<div class="float-left level-field">
+							<input type="number" class="js-level" id="char-level" min="1" max="20">
+							<div>LEVEL</div>
+						</div>
+					</div>
+						<div class="summ-sect">
+							<input type="text" name="firstname">
+							<div>BACKGROUND</div>
+						</div>
+						<div class="summ-sect"</>
+							<input type="text" name="firstname">
+							<div>PLAYER NAME</div>
+						</div>
+						<div class="summ-sect">
+							<input type="text" name="firstname">
+							<div>RACE</div>
+						</div>
+						<div class="summ-sect">
+							<input type="text" name="firstname">
+							<div>ALIGNMENT</div>
+						</div>
+						<div class="summ-sect">
+							<input type="text" name="firstname">
+							<div>EXPERIENCE POINTS</div>
+						</div>
+				</div>	<!-- top level summ-bar -->
+			</div> <!-- char-bar -->
+			<div class="clearfix"> 
+				<div class="third-col float-left">
+					<!-- This 1/3rd column includes sub-columns containg Core Attribute numbers and saving throw/proficiency modifiers. 
+
+					REQ: Script to calculate global modifier stat modifier -->
+					<div class="third-col float-left clearfix">
+						<div class="attr-medal">
+							Strength
+							<input class="attr-stat js-num-only js-str" type="text" size="2" maxlength="2">
+							<div class="div-center attr-mod js-str-mod">
+							</div>
+						</div>
+						<div class="attr-medal">
+							Dexterity
+							<input class="attr-stat js-num-only js-dex" type="text" size="2" maxlength="2">
+							<div class="div-center attr-mod js-dex-mod"></div>
+						</div>
+						<div class="attr-medal">
+							Constitution
+							<input class="attr-stat js-num-only js-con" type="text" name="con" size="2" maxlength="2">
+							<div class="div-center attr-mod js-con-mod"></div>
+						</div>
+						<div class="attr-medal">
+							Intelligence
+							<input class="attr-stat js-num-only js-int" type="text" name="int" size="2" maxlength="2">
+							<div class="div-center attr-mod js-int-mod"></div>
+						</div>
+						<div class="attr-medal">
+							Wisdom
+							<input class="attr-stat js-num-only js-wis" type="text" name="wis" size="2" maxlength="2">
+							<div class="div-center attr-mod js-wis-mod"></div>
+						</div>
+						<div class="attr-medal">
+							Charisma
+							<input class="attr-stat js-num-only js-cha" type="text" name="cha" size="2" maxlength="2">
+							<div class="div-center attr-mod js-cha-mod"></div>
+						</div>
+					</div>
+					<div class="two-third-col float-right">
+						<div class="border clearfix">
+							<div class="square-field-input float-left border">
+								<input class="insp-stat" type="text" name="inspiration" size="1" maxlength="1">
+							</div>
+							<div class="rect-field float-right">
+								Inspiration
+							</div>
+						</div>
+						<!-- Below REQ: Script stating global proficiency bonus which is determined by character level -->
+						<div class="border clearfix">
+							<div class="square-field float-left border js-prof-bonus"></div>
+							<div class="rect-field float-right">
+								Proficiency Bonus
+							</div>
+						</div>
+						<!-- Below REQ: Script stating saving throw bonus which is determined is attribute modifier -->
+						<div class="border clearfix">	
+							<div class="float-left throw-col-left"> <!-- begin saving throw proficiency checks -->
+								<div>
+									<input type="checkbox" class="js-checkbox js-strCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-dexCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-conCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-intCheck" name="skill-prof" value="attribute">
+								</div>	
+								<div>
+									<input type="checkbox" class="js-checkbox js-wisCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-chaCheck" name="skill-prof" value="attribute">
+								</div>		
+							</div><!-- end saving throw proficiency input -->
+							<div class="float-left throw-col-mid"> <!-- saving throw prof display -->
+								<div class="save-name js-strRollMod"></div>
+								<div class="save-name js-dexRollMod"></div>
+								<div class="save-name js-conRollMod"></div>
+								<div class="save-name js-intRollMod"></div>
+								<div class="save-name js-wisRollMod"></div>
+								<div class="save-name js-chaRollMod"></div>
+							</div> <!-- end saving throw prof display -->
+							<div class="float-right throw-col-right"> <!-- begin saving throw proficiency names only -->
+								<div class="save-name">Strength</div>
+								<div class="save-name">Dexterity</div>
+								<div class="save-name">Constitution</div>
+								<div class="save-name">Intelligence</div>
+								<div class="save-name">Wisdom</div>
+								<div class="save-name">Charisma</div>
+							</div> <!-- end saving throw proficiency names only -->
+							<div class="float-left sub-field-name throw-fix">
+								SAVING THROWS
+							</div>
+						</div>
+						<!-- Below REQ: Script stating proficiency bonus which is calculated based on attribute level, and if box is checked add proficiency bonus-->
+						<div class="border clearfix">	
+							<div class="float-left throw-col-left"> <!-- begin skill proficiency input -->
+								<div>
+									<input type="checkbox" class="js-checkbox js-acroCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-animCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-arcaCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-athlCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-deceCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-histCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-insiCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-intiCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-inveCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-mediCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-natuCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-percCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-perfCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-persCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-reliCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-sleiCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-steaCheck" name="skill-prof" value="attribute">
+								</div>
+								<div>
+									<input type="checkbox" class="js-checkbox js-survCheck" name="skill-prof" value="attribute">
+								</div>
+							</div><!-- end skill proficiency input -->
+							<div class="float-left throw-col-mid">
+								<div class="save-name js-acroMod"></div>
+								<div class="save-name js-animMod"></div>
+								<div class="save-name js-arcaMod"></div>
+								<div class="save-name js-athlMod"></div>
+								<div class="save-name js-deceMod"></div>
+								<div class="save-name js-histMod"></div>
+								<div class="save-name js-insiMod"></div>
+								<div class="save-name js-intiMod"></div>
+								<div class="save-name js-inveMod"></div>
+								<div class="save-name js-mediMod"></div>
+								<div class="save-name js-natuMod"></div>
+								<div class="save-name js-percMod"></div>
+								<div class="save-name js-perfMod"></div>
+								<div class="save-name js-persMod"></div>
+								<div class="save-name js-reliMod"></div>
+								<div class="save-name js-sleiMod"></div>
+								<div class="save-name js-steaMod"></div>
+								<div class="save-name js-survMod"></div>
+							</div>
+							<div class="float-right throw-col-right"> <!-- begin skill proficiency names only -->
+								<div class="save-name">Acrobatics <span class="gray">(Dex)</span></div>
+								<div class="save-name">Animal Handling <span class="gray">(Wis)</span></div>
+								<div class="save-name">Arcana <span class="gray">(Int)</span></div>
+								<div class="save-name">Athletics <span class="gray">(Str)</span></div>
+								<div class="save-name">Deception <span class="gray">(Cha)</span></div>
+								<div class="save-name">History <span class="gray">(Int)</span></div>
+								<div class="save-name">Insight <span class="gray">(Wis)</span></div>
+								<div class="save-name">Intimidation <span class="gray">(Cha)</span></div>
+								<div class="save-name">Investigation <span class="gray">(Int)</span></div>
+								<div class="save-name">Medicine <span class="gray">(Wis)</span></div>
+								<div class="save-name">Nature <span class="gray">(Int)</span></div>
+								<div class="save-name">Perception <span class="gray">(Wis)</span></div>
+								<div class="save-name">Performance <span class="gray">(Cha)</span></div>
+								<div class="save-name">Persuasion <span class="gray">(Cha)</span></div>
+								<div class="save-name">Religion <span class="gray">(Int)</span></div>
+								<div class="save-name">Sleight of Hand <span class="gray">(Dex)</span></div>
+								<div class="save-name">Stealth <span class="gray">(Dex)</span></div>
+								<div class="save-name">Survival <span class="gray">(Wis)</span></div>
+							</div> <!-- end skill profiency name-only -->
+							<div class="float-left sub-field-name throw-fix">SKILLS</div>
+						</div>  <!-- end float container -->
+					</div> <!-- end clearfix -->
+					<div class="border full float-left clearfix">
+						<div class="square-field float-left border js-passivePerc"></div>
+						<div class="rect-field float-right">
+								Passive Wisdom (Perception)
+						</div>
+						<div>
+							<textarea rows="10" cols="51"></textarea>
+							<div class="sub-field-name">OTHER PROFICIENCIES AND LANGUAGES</div>
+						</div> 
+					</div>
+				</div> <!-- End of overall 1/3rd left column containing -->
+				<div class="third-col float-left"> <!-- Middle column containing AC/Init/Speed/HP/Items -->
+					<div class="clearfix"> <!-- Contains AC/Init/Speed medallions -->
+						<div class="third-col float-left attr-medal">
+							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
+							AC
+						</div>
+						<div class="third-col float-left attr-medal">
+							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
+							Initiative
+						</div>
+						<div class="third-col float-left attr-medal">
+							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
+							Speed
+						</div>
+					</div> <!-- End AC/Init/Speed container -->
+					<div class="border">
+						<span class="gray reduced">Hit Point Maximum</span>
+						<input type="text" name="max-hp" style="width: 190px";>
+					</div>
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">CURRENT HIT POINTS</div>
+					</div>
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">TEMPORARY HIT POINTS</div>
+					</div>
+					<div class="clearfix"> <!-- Contains Hit Dice and Death Saves -->
+						<div class="half-col float-left border">
+							<span class="gray reduced">Total</span>
+							<input type="text" name="total_hit_dice" style="width: 100px";>
+							<textarea rows="3" cols="24"></textarea>
+							<div class="sub-field-name">HIT DICE</div>
+						</div>
+						<div class="half-col float-left border" style="padding-top: 15px;">
+							<div class="clearfix">
+								<div class="half-col float-left">
+									<div class="text-110" style="padding-bottom: 8px;">Successes</div>
+									<div class="text-110">Failures</div>
+								</div>
+								<div class="half-col float-left">
+									<ul class="checkbox-grid">
+									    <li><input type="checkbox" name="text1" value="value1" /><label for="text1"></label></li>
+									    <li><input type="checkbox" name="text2" value="value2" /><label for="text2"></label></li>
+									    <li><input type="checkbox" name="text3" value="value3" /><label for="text3"></label></li>
+									    <li><input type="checkbox" name="text4" value="value4" /><label for="text4"></label></li>
+									    <li><input type="checkbox" name="text5" value="value5" /><label for="text5"></label></li>
+									    <li><input type="checkbox" name="text6" value="value6" /><label for="text6"></label></li>
+									</ul>
+								</div> <!-- Death Save check box grid ends -->
+							</div> <!-- Clearfix end -->
+							<div class="sub-field-name" style="padding-top: 10px;">DEATH SAVES</div>
+						</div> <!-- Total death save area ends -->
+					</div> <!-- Clearfix ends -->
+					<div class="border"> <!-- Overall Attacks and Spellcasting area -->
+						<div class="clearfix"> 
+							<div class="two-fifth-col float-left gray reduced">NAME</div>
+							<div class="one-fifth-col float-left gray reduced">ATK BONUS</div>
+							<div class="two-fifth-col float-left gray reduced">DMG/TYPE</div>
+						</div>
+						<textarea rows="10" cols="52"></textarea>
+						<div class="sub-field-name">ATTACKS AND SPELLCASTING</div>
+					</div> <!-- End overall attacks and spellcasting area -->
+					<div class="border"> <!-- Equipment/armor area -->
+						<div class="clearfix">
+							<div class="one-fifth-col float-left"> <!-- Player currency area -->
+								<div class="border pad-top-bot-five">
+									<span class="gray reduced pad-left-five">CP</span>
+									<input type="text" class="wid-40" name="copper">
+								</div>
+								<div class="border pad-top-bot-five">
+									<span class="gray reduced pad-left-five">SP</span>
+									<input type="text" class="wid-40" name="silver">
+								</div>
+								<div class="border pad-top-bot-five">
+									<span class="gray reduced pad-left-five wid-40">EP</span>
+									<input type="text" class="wid-40" name="electrum">
+								</div>
+								<div class="border pad-top-bot-five">
+									<span class="gray reduced pad-left-five">GP</span>
+									<input type="text" class="wid-40" name="gold">
+								</div>
+								<div class="border pad-top-bot-five">
+									<span class="gray reduced pad-left-five">PP</span>
+									<input type="text" class="wid-40" name="platinum">
+								</div> 
+							</div> <!-- End player curency area -->
+							<div class="four-fifth-col float-right pad-left-five">	
+								<div class="clearfix"></div>
+									<div class="two-third-col float-left gray reduced">ARMOR</div>
+									<div class="third-col float-left gray reduced">AC</div>
+								</div>
+								<textarea rows="14" cols="38"></textarea>	
+						</div>
+					</div>
+				</div> <!-- End middle column -->
+				<div class="third-col float-left">	
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">PERSONALITY TRAITS</div>
+					</div>
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">IDEALS</div>
+					</div>
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">BONDS</div>
+					</div>
+					<div class="border">
+						<textarea rows="6" cols="52"></textarea>
+						<div class="sub-field-name">FLAWS</div>
+					</div>
+					<div class="border">
+						<textarea rows="24" cols="52"></textarea>
+						<div class="sub-field-name">FEATURES AND TRAITS</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script src='javascript/main.js'></script>
+	</body>
+</html>
+
+
+
+
+
