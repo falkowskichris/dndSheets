@@ -2,7 +2,7 @@
 <html>
 <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>standard template</title>
+    <title>D&D Sheets</title>
     <link rel='stylesheet' href='styles/reset.css'>
     <link rel='stylesheet' href='styles/main.css'>
 </head>
@@ -12,14 +12,14 @@
 			<!-- Below row includes character name and global information incl. class/level/experience points. -->
 			<div class="char-bar clearfix">
 				<div class="third-col float-left"> 
-				<h1>DnD Sheets</h1>
+				<h1>D&D Sheets</h1>
 				<input type="text" name="char-name" class="char-name js-char-name">
 				<span class="char-name">CHARACTER NAME</span>
 				</div> <!-- Character name end -->
 				<div class="summ-bar clearfix"> <!-- Top level character summary -->
 					<div class="summ-sect clearfix"> <!-- Class/Level container-->
 						<div class="float-left class-field">
-							<input type="text" name="char-class">
+							<input type="text" class="js-char-class" name="char-class">
 							<div>CLASS</div>
 						</div>
 						<div class="float-left level-field">
@@ -28,23 +28,23 @@
 						</div>
 					</div>
 						<div class="summ-sect">
-							<input type="text" name="firstname">
+							<input type="text" class="js-char-background" name="firstname">
 							<div>BACKGROUND</div>
 						</div>
 						<div class="summ-sect"</>
-							<input type="text" name="firstname">
+							<input type="text" class="js-player-name" name="firstname">
 							<div>PLAYER NAME</div>
 						</div>
 						<div class="summ-sect">
-							<input type="text" name="firstname">
+							<input type="text" class="js-char-race" name="firstname">
 							<div>RACE</div>
 						</div>
 						<div class="summ-sect">
-							<input type="text" name="firstname">
+							<input type="text" class="js-char-align" name="firstname">
 							<div>ALIGNMENT</div>
 						</div>
 						<div class="summ-sect">
-							<input type="text" name="firstname">
+							<input type="text" class="js-char-exp" name="experience">
 							<div>EXPERIENCE POINTS</div>
 						</div>
 				</div>	<!-- top level summ-bar -->
@@ -252,7 +252,7 @@
 								Passive Wisdom (Perception)
 						</div>
 						<div>
-							<textarea rows="10" cols="51"></textarea>
+							<textarea class="js-other-profs" rows="10" cols="51"></textarea>
 							<div class="sub-field-name">OTHER PROFICIENCIES AND LANGUAGES</div>
 						</div> 
 					</div>
@@ -260,16 +260,16 @@
 				<div class="third-col float-left"> <!-- Middle column containing AC/Init/Speed/HP/Items -->
 					<div class="clearfix"> <!-- Contains AC/Init/Speed medallions -->
 						<div class="third-col float-left attr-medal">
-							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
+							<input class="attr-stat js-armor-class" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
 							AC
 						</div>
 						<div class="third-col float-left attr-medal">
 							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
-							Initiative
+							INITIATIVE
 						</div>
 						<div class="third-col float-left attr-medal">
-							<input class="attr-stat" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
-							Speed
+							<input class="attr-stat js-char-speed" type="text" name="ATTRIBUTE HOLDER" size="2" maxlength="2">
+							SPEED
 						</div>
 					</div> <!-- End AC/Init/Speed container -->
 					<div class="border">
@@ -277,11 +277,11 @@
 						<input type="text" name="max-hp" style="width: 190px";>
 					</div>
 					<div class="border">
-						<textarea rows="6" cols="52"></textarea>
+						<textarea class="js-current-hp" rows="6" cols="52"></textarea>
 						<div class="sub-field-name">CURRENT HIT POINTS</div>
 					</div>
 					<div class="border">
-						<textarea rows="6" cols="52"></textarea>
+						<textarea class="js-temp-hp" rows="6" cols="52"></textarea>
 						<div class="sub-field-name">TEMPORARY HIT POINTS</div>
 					</div>
 					<div class="clearfix"> <!-- Contains Hit Dice and Death Saves -->
@@ -377,12 +377,20 @@
 				</div>
 			</div>
 		</section>
+		<section class="half-col border div-center" style="margin-bottom: 100px;">
+				<div class="clearfix">
+					<div class="half-col float-left sub-field-name">
+						<button type="button" class="btn js-save">Save</button>
+					</div>
+					<div class="half-col float-left sub-field-name">
+						<button type="button" class="btn js-clear">Clear</button>
+					</div>
+				</div>
+			</section>
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
     <script src='javascript/main.js'></script>
 	</body>
 </html>
-
-
 
 
 
