@@ -1,13 +1,132 @@
 /* CURRENTLY IN: javascript/main.js */
 
+
+function checkIfLocallyStored() {
+  const data = window.localStorage.getItem('data');
+  if ( data === null ) {
+    return;
+  }
+
+  const properties = JSON.parse(data)
+  console.log(properties)
+  
+
+  str = properties.str;
+  $('.js-str')
+    .val(str)
+    .trigger('change');
+  dex = properties.dex;
+  $('.js-dex')
+    .val(dex)
+    .trigger('change');
+  con = properties.con;
+  $('.js-con')
+    .val(con)
+    .trigger('change');
+  int = properties.int;
+  $('.js-int')
+    .val(int)
+    .trigger('change');
+  wis = properties.wis;
+  $('.js-wis')
+    .val(wis)
+    .trigger('change');
+  cha = properties.cha; 
+  $('.js-cha')
+    .val(cha)
+    .trigger('change');
+
+  charName = properties.charName;
+  $('.js-char-name')
+    .val(charName)
+    .trigger('change');
+  charClass = properties.charClass;
+  $('.js-char-class')
+    .val(charClass)
+    .trigger('change');
+  level = properties.level;
+  $('.js-level')
+    .val(level)
+    .trigger('change');
+  playerName = properties.playerName;
+  $('.js-player-name')
+    .val(playerName)
+    .trigger('change');
+  charRace = properties.charRace;
+  $('.js-char-race')
+    .val(charRace)
+    .trigger('change');
+  charExp = properties.charExp;
+  $('.js-char-exp')
+    .val(charExp)
+    .trigger('change');
+  armorClass = properties.armorClass;
+  $('.js-armor-class')
+    .val(armorClass)
+    .trigger('change');
+  charSpeed = properties.charSpeed;
+  $('.js-char-speed')
+    .val(charSpeed)
+    .trigger('change');
+  otherProfs = properties.otherProfs;
+  $('.js-other-profs')
+    .val(otherProfs)
+    .trigger('change');
+  charBackground = properties.charBackground;
+  $('.js-char-background')
+    .val(charBackground)
+    .trigger('change');    
+  charAlign = properties.charAlign;
+  $('.js-char-align')
+    .val(charAlign)
+    .trigger('change');
+  currentHP = properties.currentHP;
+  $('.js-current-hp')
+    .val(currentHP)
+    .trigger('change');
+  tempHP = properties.tempHP;
+  $('.js-temp-hp')
+    .val(tempHP)
+    .trigger('change');
+
+
+}
+
+function changeMods() {
+
+  changeThrowMod();
+  changeSkillMod();
+  changePassPerc(); 
+}
+
+
+// Values required for storage
 let level = null;
-let profMod = null;
 let str = null;
 let dex = null;
 let con = null;
 let int = null;
 let wis = null;
 let cha = null;
+let charName = null;
+let charClass = null;
+let charBackground = null;
+let playerName = null;
+let charRace = null;
+let charAlign = null;
+let charExp = null;
+let armorClass = null;
+let charSpeed = null;
+let currentHP = null;
+let otherProfs = null;
+let tempHP = null;
+
+
+
+
+
+// Derivitive values not needed for storage
+let profMod = null;
 let strMod = null;
 let dexMod = null;
 let conMod = null;
@@ -15,6 +134,154 @@ let intMod = null;
 let wisMod = null;
 let chaMod = null;
 let passivePerc = null;
+
+// window.localStorage.setItem('key', val)
+// window.localStorage.getItem('key') -- if empty this method will return null
+
+// function onSaveBtnClick() {
+  // const GameState = {};
+  // const nameKey = 'gorag_the_destroyer'
+  // GameState[nameKey] = {
+  //   level,
+  // }
+
+//   const nameKey2 = 'foobar_etc';
+
+//   GameState[nameKey2] = {
+//     level,
+//   }
+//   console.log(GameState)
+// }
+
+saveButton = $('.js-save')
+$(saveButton).on('click', function(e) {
+  onSaveBtnClick();
+});
+
+function onSaveBtnClick() {
+
+  const data = {
+    charName,
+    level,
+    str,
+    dex,
+    con,
+    int,
+    wis,
+    dex,
+    cha,
+    charClass,
+    charBackground,
+    playerName,
+    charRace,
+    charAlign,
+    charExp,
+    armorClass,
+    charSpeed,
+    currentHP,
+    otherProfs,
+    tempHP,
+  };
+
+  const dataStr = JSON.stringify(data);
+
+  window.localStorage.setItem('data', dataStr);
+
+};
+
+clearButton = $('.js-clear')
+$(clearButton).on('click', function(e) {
+  onClearBtnClick();
+});
+
+function onClearBtnClick() {
+  localStorage.clear();
+}
+
+  /*
+
+  to grab and update data
+
+  - read window.localStorage.getItem('data')
+  - ^^^ it will either be null or have a string
+  - if null, return {}
+  - else, JSON.parse(string)
+  function getStoredData(){}
+
+  - what we mean by currentData.... const currentData = getStoredData()
+  - take the data you got from getStoredData()
+  - pass it in to this function along with the 'nameKey' - the name user has entered
+  - in your function, do currentData[nameKey] = { level, str, ...etc... }
+  - return currentData
+  function appendToStoredData(currentData, nameKey) {}
+*/  
+
+  // const currentData = getStoredData()
+  // const updatedData = appendToStoredData(currentData, 'gorag_the_destroyer')
+  // window.localStorage.setItem('data', JSON.stringify(updatedData))
+
+
+
+
+// text areas that I need to save for storage
+
+
+
+const charNameEl = $('.js-char-name')
+$(charNameEl).on('keyup change', function(e) {
+  charName = (charNameEl.val()).replace(/ /g, "_");
+});
+
+const charClassEl = $('.js-char-class')
+$(charClassEl).on('keyup change', function(e) {
+  charClass = (charClassEl.val()).replace(/ /g, "_");
+});
+
+const charBackgroundEl = $('.js-char-background')
+$(charBackgroundEl).on('keyup change', function(e) {
+  charBackground = (charBackgroundEl.val()).replace(/ /g, "_");
+});
+
+const playerNameEl = $('.js-player-name')
+$(playerNameEl).on('keyup change', function(e) {
+  playerName = (playerNameEl.val()).replace(/ /g, "_");
+});
+
+const charRaceEl = $('.js-char-race')
+$(charRaceEl).on('keyup change', function(e) {
+  charRace = (charRaceEl.val()).replace(/ /g, "_");
+});
+
+const charAlignEl = $('.js-char-align')
+$(charAlignEl).on('keyup change', function(e) {
+  charAlign = (charAlignEl.val()).replace(/ /g, "_");
+});
+
+const charExpEl = $('.js-char-exp')
+$(charExpEl).on('keyup change', function(e) {
+  charExp = (charExpEl.val()).replace(/ /g, "_");
+});
+
+const currentHPEl = $('.js-current-hp')
+$(currentHPEl).on('keyup change', function(e) {
+  currentHP = (currentHPEl.val()).replace(/ /g, "_");
+});
+
+const tempHPEl = $('.js-temp-hp')
+$(tempHPEl).on('keyup change', function(e) {
+  tempHP = (tempHPEl.val()).replace(/ /g, "_");
+});
+
+const otherProfsEl = $('.js-other-profs')
+$(otherProfsEl).on('keyup change', function(e) {
+  otherProfs = (otherProfsEl.val()).replace(/ /g, "_");
+});
+
+const armorClassEl = $('.js-armor-class')
+$(armorClassEl).on('keyup change', function(e) {
+  armorClass = (armorClassEl.val()).replace(/ /g, "_");
+});
+
 
 
 // Level change into proficiency modifier code below
@@ -52,7 +319,7 @@ $(levelEl).on('keypress keyup change', function(e) {
 function changePassPerc() {
   const passivePercEl = $('.js-passivePerc')
   const percCheckEl = $('.js-percCheck')
-  const percCheck = percCheckEl.is(":checked");
+  const percCheck = percCheckEl.is(":checked change");
     if (wisMod > 0 && percCheck == false) {
       const passivePerc = (10 + wisMod)
       passivePercEl.text("+" + passivePerc);
@@ -87,7 +354,7 @@ function changePassPerc() {
 // Below are all the ability stat in ability modifer functions
 const strEl = $('.js-str');
   
-$(strEl).on('keyup', function() {
+$(strEl).on('keyup change', function() {
   str = parseInt(strEl.val(), 10);
     if (str === 1) {
       strMod = -5;
@@ -139,7 +406,7 @@ $(strEl).on('keyup', function() {
 
 const dexEl = $('.js-dex');
   
-$(dexEl).on('keyup', function() {
+$(dexEl).on('keyup change', function() {
   dex = parseInt(dexEl.val(), 10);
   if (dex === 1) {
     dexMod = -5;
@@ -191,7 +458,7 @@ $(dexEl).on('keyup', function() {
 
 const conEl = $('.js-con');
   
-$(conEl).on('keyup', function() {
+$(conEl).on('keyup change', function() {
   con = parseInt(conEl.val(), 10);
   if (con === 1) {
     conMod = -5;
@@ -243,7 +510,7 @@ $(conEl).on('keyup', function() {
 
 const intEl = $('.js-int');
   
-$(intEl).on('keyup', function() {
+$(intEl).on('keyup change', function() {
   int = parseInt(intEl.val(), 10);
   if (int === 1) {
     intMod = -5;
@@ -295,7 +562,7 @@ $(intEl).on('keyup', function() {
 
 const wisEl = $('.js-wis');
   
-$(wisEl).on('keyup', function() {
+$(wisEl).on('keyup change', function() {
   wis = parseInt(wisEl.val(), 10);
   if (wis === 1) {
     wisMod = -5;
@@ -347,7 +614,7 @@ $(wisEl).on('keyup', function() {
 
 const chaEl = $('.js-cha');
   
-$(chaEl).on('keyup', function() {
+$(chaEl).on('keyup change', function() {
   cha = parseInt(chaEl.val(), 10);
   if (cha === 1) {
     chaMod = -5;
@@ -385,7 +652,6 @@ $(chaEl).on('keyup', function() {
   else {
     chaMod = 0;
   };
-  console.log(chaMod);
     const chaModEl = $('.js-cha-mod')
   if (chaMod > 0) {
     chaModEl.text("+" + chaMod);
@@ -403,7 +669,7 @@ function changeThrowMod() {
     function changeStrMod() {
       const strRollModEl = $('.js-strRollMod')
       const strCheckEl = $('.js-strCheck')
-      const strCheck = strCheckEl.is(":checked");
+      const strCheck = strCheckEl.is(":checked click");
         if (strMod > 0 && strCheck == false) {
           strRollModEl.text("+" + strMod);
         }
@@ -545,13 +811,14 @@ function changeThrowMod() {
     changeWisMod();
     changeChaMod();
     changePassPerc();
+
 }
 
 function changeSkillMod() {
     function changeAcroMod() {
         const acroModEl = $('.js-acroMod')
         const acroCheckEl = $('.js-acroCheck')
-        const acroCheck = acroCheckEl.is(":checked");
+        const acroCheck = acroCheckEl.is(":checked change");
           if (dexMod > 0 && acroCheck == false) {
             acroModEl.text("+" + dexMod);
           }
@@ -982,6 +1249,8 @@ function changeSkillMod() {
     changePersMod();
     changePassPerc();
 }
+
+
     
 
 
@@ -993,6 +1262,7 @@ const checkboxEl = $('.js-checkbox')
 $(checkboxEl).on('change', function(e) {
     changeThrowMod();
     changeSkillMod();
+    changePassPerc(); 
 });
 
 
@@ -1028,3 +1298,7 @@ $(document).delegate('textarea', 'keydown', function(e) {
   }
 });
 // End tab/indent with textarea function
+
+
+checkIfLocallyStored();
+changeMods();
